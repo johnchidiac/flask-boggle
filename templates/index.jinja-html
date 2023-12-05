@@ -1,0 +1,26 @@
+{% extends "base.jinja-html" %}
+{% block title %}Play Boggle{% endblock %}
+{% block content %}
+	<h1>Boggle... your mind!</h1>
+	<div id="game-board">
+	{% for row in board %}
+		<div class="row">
+		{% for letter in row %}
+			<div class="letter">{{letter}}</div>
+		{% endfor %}
+		</div>
+	{% endfor %}
+	</div>
+
+	<form id="guess" action="/guess" method="post">
+		<input type="text" id="word" placeholder="Enter guess">
+		<button>Guess</button>
+	</form>
+
+	<div id="game-stats">
+		<div id="score-container">Score: <span id="current-score">0</span></div>
+		<div id="time">Time Remaining: <span id="timer"></span></div>
+		<div id="times-played">Times Played: <span id="plays">0</span></div>
+		<div id="high-score-container">High Score: <span id="high-score">0</span></div>
+	</div>
+{% endblock %}
